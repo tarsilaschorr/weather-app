@@ -29,6 +29,14 @@ let date = now.getDate();
 currentDate.innerHTML = `${day}, ${month} ${date}`;
 
 // getting name of city
+
+function Search(city) {
+  let key = "cd070e95ac9ddf93deb2685de9391443";
+  let units = "metric";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=${units}`;
+
+  axios.get(url).then(displayWeather);
+}
 function changeCity(event) {
   event.preventDefault();
   let typedCity = document.querySelector("#typed-city");
@@ -48,12 +56,24 @@ form.addEventListener("submit", changeCity);
 function displayWeather(response) {
   let weatherDiv = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
-  let rain = document.querySelector("#rain");
   let typedCity = document.querySelector("#typed-city");
   let cityCountry = response.data.sys.country;
   let returnedCity = response.data.name;
+  let description = document.querySelector("#description");
 
   typedCity.innerHTML = `${returnedCity}, ${cityCountry}`;
+  description.innerHTML = `${response.data.weather[0].main}`;
+  // getting time zone
+  function HandleTimeZone(response) {
+    console.log(response.data);
+  }
+  let loc = "35.731252, 139.730291"; // Tokyo expressed as lat,lng tuple
+  let targetDate = new Date();
+  let timestamp =
+    targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60; // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
+  let apikey = "AIzaSyBTh9gmaNnMC9sBN8yYqHWyGzSPsaw7pBY";
+  let apicall = `https://maps.googleapis.com/maps/api/timezone/json?location=${loc}&×tamp=${timestamp}&key=${apikey}`;
+  axios.get(apicall).then(HandleTimeZone);
 
   let wind = document.querySelector("#wind");
   let currentWindSpeed = Math.round(response.data.wind.speed);
@@ -116,3 +136,5 @@ function displayCurrentTemperature(event) {
 }
 let current = document.querySelector("#current-button");
 current.addEventListener("click", displayCurrentTemperature);
+
+Search("New York");

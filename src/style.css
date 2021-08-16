@@ -101,7 +101,9 @@ div.card {
 .percentage {
   font-size: 15px;
 }
-
+.time {
+  display: inline;
+}
 .city {
   background-color: #f2f9f8;
   border-radius: 5px;
