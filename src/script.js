@@ -53,6 +53,18 @@ let form = document.querySelector("#form");
 form.addEventListener("submit", changeCity);
 
 // getting city temperature
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}:${minutes}`;
+}
 function displayWeather(response) {
   let weatherDiv = document.querySelector("#temperature");
   let temperature = Math.round(response.data.main.temp);
@@ -60,29 +72,24 @@ function displayWeather(response) {
   let cityCountry = response.data.sys.country;
   let returnedCity = response.data.name;
   let description = document.querySelector("#description");
-
+  let iconElement = document.querySelector("#icon");
+  let icon = response.data.weather[0].icon;
   typedCity.innerHTML = `${returnedCity}, ${cityCountry}`;
   description.innerHTML = `${response.data.weather[0].main}`;
-  // getting time zone
-  function HandleTimeZone(response) {
-    console.log(response.data);
-  }
-  let loc = "35.731252, 139.730291"; // Tokyo expressed as lat,lng tuple
-  let targetDate = new Date();
-  let timestamp =
-    targetDate.getTime() / 1000 + targetDate.getTimezoneOffset() * 60; // Current UTC date/time expressed as seconds since midnight, January 1, 1970 UTC
-  let apikey = "AIzaSyBTh9gmaNnMC9sBN8yYqHWyGzSPsaw7pBY";
-  let apicall = `https://maps.googleapis.com/maps/api/timezone/json?location=${loc}&×tamp=${timestamp}&key=${apikey}`;
-  axios.get(apicall).then(HandleTimeZone);
-
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
   let wind = document.querySelector("#wind");
   let currentWindSpeed = Math.round(response.data.wind.speed);
   let humidity = document.querySelector("#humidity");
   let currentHumidity = Math.round(response.data.main.humidity);
+  let dateElement = document.querySelector("#time");
 
   weatherDiv.innerHTML = `${temperature}ºC`;
   humidity.innerHTML = ` Humidity ${currentHumidity}%`;
   wind.innerHTML = `Wind ${currentWindSpeed} km/h`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   function changeFahrenheit(event) {
     event.preventDefault();
