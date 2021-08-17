@@ -54,12 +54,14 @@ input.button {
   border-color: rgba(0, 0, 0, 0.8);
 }
 
-h3 {
+img {
   text-align: center;
   display: block;
   margin: 0 auto;
   font-size: 50px;
-  margin-top: 80px;
+  margin-top: 40px;
+  background-color: #c5e6ef;
+  border-radius: 50%;
 }
 
 .time {
