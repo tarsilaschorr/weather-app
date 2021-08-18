@@ -49,8 +49,6 @@ function changeCity(event) {
 
   axios.get(url).then(displayWeather);
 }
-let form = document.querySelector("#form");
-form.addEventListener("submit", changeCity);
 
 // getting city temperature
 function formatDate(timestamp) {
@@ -94,15 +92,24 @@ function displayWeather(response) {
   function changeFahrenheit(event) {
     event.preventDefault();
     let FTemperature = document.querySelector("#temperature");
+    let celciusLink = document.querySelector("#celcius-link");
+    let fahrenheitLink = document.querySelector("#fahrenheit-link");
     let celcius = Math.round(response.data.main.temp);
     let fahrenheit = Math.round(([celcius] * 9) / 5 + 32);
+    celciusLink.classList.remove("active");
+    celciusLink.classList.add("inactive");
+    fahrenheitLink.classList.add("active");
     FTemperature.innerHTML = `${fahrenheit}ºF`;
   }
 
   function changeCelcius(event) {
     event.preventDefault();
     let CTemperature = document.querySelector("#temperature");
+    let celciusLink = document.querySelector("#celcius-link");
+    let fahrenheitLink = document.querySelector("#fahrenheit-link");
     let celcius = Math.round(response.data.main.temp);
+    fahrenheitLink.classList.remove("active");
+    celciusLink.classList.add("active");
     CTemperature.innerHTML = `${celcius}ºC`;
   }
   let fahrenheit = document.querySelector("#fahrenheit-link");
@@ -141,6 +148,9 @@ function displayCurrentTemperature(event) {
 
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
+let form = document.querySelector("#form");
+form.addEventListener("submit", changeCity);
+
 let current = document.querySelector("#current-button");
 current.addEventListener("click", displayCurrentTemperature);
 

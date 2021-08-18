@@ -148,28 +148,28 @@ div.col-9 {
 .source-code:hover {
   text-decoration: underline;
 }
+.inactive {
+  color: #cf798e;
+  text-decoration: underline;
+}
+.inactive:hover {
+  color: #cf798e;
+}
+.active {
+  color: rgba(0, 0, 0, 0.8);
+  cursor: default;
+  text-decoration: none;
+}
+
+.active:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.8);
+}
+
 #typed-city {
   margin: 0;
 }
-#celcius-link {
-  text-decoration: none;
-  color: #000;
-}
 
-#celcius-link:hover {
-  text-decoration: underline;
-  color: #cf798e;
-}
-
-#fahrenheit-link {
-  text-decoration: none;
-  color: #000;
-}
-
-#fahrenheit-link:hover {
-  text-decoration: underline;
-  color: #cf798e;
-}
 #wind,
 #rain,
 #humidity {
