@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: #f2f9f8;
+  background-color: #edfaf8;
   max-width: 80%;
   display: block;
   margin: 0 auto;
@@ -107,7 +107,7 @@ div.card {
   display: inline;
 }
 .city {
-  background-color: #f2f9f8;
+  background-color: #edfaf8;
   border-radius: 5px;
 }
 .temperature {
