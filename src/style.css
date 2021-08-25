@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  background-color: #edfaf8;
+  background-color: #fff;
   max-width: 80%;
   display: block;
   margin: 0 auto;
@@ -12,15 +12,17 @@ h1 {
   margin: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
 }
 form {
   margin: 10px;
 }
 h2 {
-  margin: 20px;
+  margin: 20px 20px 0px;
   color: rgba(0, 0, 0, 0.8);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 200;
 }
 hr {
   background-color: rgba(0, 0, 0, 0.8);
@@ -29,6 +31,7 @@ span {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: black;
+  font-weight: 300;
 }
 p {
   font-weight: 600;
@@ -52,6 +55,7 @@ input.button {
   border: 1px solid;
   border-radius: 5px;
   border-color: rgba(0, 0, 0, 0.8);
+  font-weight: 300;
 }
 
 .icon {
@@ -66,8 +70,10 @@ input.button {
 
 .time {
   margin-top: 0;
+  margin-bottom: 30px;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.8);
+  line-height: 40px;
 }
 
 .description {
@@ -107,7 +113,7 @@ div.card {
   display: inline;
 }
 .city {
-  background-color: #edfaf8;
+  background-color: #fff;
   border-radius: 5px;
 }
 .temperature {
@@ -116,6 +122,7 @@ div.card {
   border-radius: 5px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 300;
 }
 
 div.app {
