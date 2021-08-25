@@ -47,7 +47,10 @@ function changeCity(event) {
   event.preventDefault();
   let typedCity = document.querySelector("#typed-city");
   let searchCity = document.querySelector("#search-city");
-
+  let celciusLink = document.querySelector("#celcius-link");
+  let fahrenheitLink = document.querySelector("#fahrenheit-link");
+  fahrenheitLink.classList.remove("active");
+  celciusLink.classList.add("active");
   let searchedCity = `${searchCity.value}`;
   let key = "cd070e95ac9ddf93deb2685de9391443";
   let units = "metric";
@@ -186,12 +189,17 @@ function displayCurrentTemperature(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("#search-city");
   searchedCity.value = " ";
+
   function handlePosition(position) {
     let key = "cd070e95ac9ddf93deb2685de9391443";
     let lat = position.coords.latitude;
     let lon = position.coords.longitude;
     let units = "metric";
     let locationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${units}`;
+    let celciusLink = document.querySelector("#celcius-link");
+    let fahrenheitLink = document.querySelector("#fahrenheit-link");
+    fahrenheitLink.classList.remove("active");
+    celciusLink.classList.add("active");
     axios.get(locationUrl).then(displayWeather);
   }
 
